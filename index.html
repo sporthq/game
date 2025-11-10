@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Code!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>Unlock Your Code!</h1>
+        <div class="separator"></div>
+        <p class="instruction">Slide the key to the exit to reveal your code!</p>
+
+        <div id="game-section" class="hidden">
+            <div id="game-board-wrapper">
+                <div id="game-board">
+                    <!-- Blocks and key will be generated here by JavaScript -->
+                </div>
+                <div id="game-exit-door"></div> <!-- The exit door -->
+            </div>
+            <div id="message-area"></div>
+        </div>
+
+        <div id="promo-code-area" class="hidden">
+            <p>Your promo code:</p>
+            <h2 id="promo-code">EASYCODE2024</h2>
+            <button id="copy-code-button">Copy Code</button>
+            <p class="small-text">Copy the code and use it during checkout!</p>
+        </div>
+
+        <button id="reset-button" class="hidden">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

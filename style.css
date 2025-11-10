@@ -1,0 +1,213 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    color: #333;
+    margin: 0;
+}
+
+.game-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    transition: all 0.5s ease-in-out;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 2.8em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.separator {
+    width: 80%;
+    height: 4px;
+    background-color: #FFC107;
+    margin: 20px auto 30px auto;
+    border-radius: 2px;
+}
+
+.instruction {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+#game-section {
+    margin-top: 30px;
+}
+
+#game-board-wrapper {
+    position: relative;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+#game-board {
+    display: grid;
+    border: 5px solid #FFC107;
+    background-color: #F8F8F8;
+    position: relative;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    /* Ensure nothing visually escapes the board */
+}
+
+/* Updated styles for the exit door to be *inside* the board */
+#game-exit-door {
+    position: absolute;
+    /* Positioned within the game-board, as a static background element */
+    background-color: #8D6E63;
+    border: 2px solid #5D4037;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FFFFFF" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-5-3c0-1.66 1.34-3 3-3s3 1.34 3 3v2H8V5c0-1.66 1.34-3 3-3s3 1.34 3 3z"/></svg>');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+    /* Keep it in the background */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.block {
+    background-color: #90CAF9;
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.4em;
+    box-sizing: border-box;
+    cursor: grab;
+    transition: transform 0.1s ease-out, background-color 0.2s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    /* Blocks should be above the exit door */
+}
+
+.block.key {
+    background-color: #FFEB3B;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23D32F2F" d="M12 1a11 11 0 0 0-9.87 16.51L1 21l3-1 2.5 2.5L8 21.5l1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5L23 21l-2.13-3.49A11 11 0 0 0 12 1zm-1 6h2v4h-2V7zm0 6h2v4h-2v-4z"/></svg>');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #FFA000;
+}
+
+.block.key::after {
+    content: '🔑';
+    font-size: 1.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+}
+
+#message-area {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+    min-height: 40px;
+}
+
+#promo-code-area {
+    background-color: #E8F5E9;
+    border: 2px dashed #4CAF50;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#promo-code-area p {
+    font-size: 1.1em;
+    color: #388E3C;
+    margin-bottom: 10px;
+}
+
+#promo-code {
+    font-size: 2.2em;
+    color: #D32F2F;
+    font-weight: bold;
+    letter-spacing: 1px;
+    word-break: break-all;
+    user-select: all;
+    padding: 10px;
+    background-color: #FDFEFE;
+    border-radius: 5px;
+    border: 1px solid #c8e6c9;
+    cursor: pointer;
+}
+
+#copy-code-button {
+    background-color: #2196F3;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#copy-code-button:hover {
+    background-color: #1976D2;
+}
+
+.small-text {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+}
+
+#reset-button {
+    background-color: #FFA000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reset-button:hover {
+    background-color: #FB8C00;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#game-board-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
